@@ -1,0 +1,252 @@
+{
+	"info": {
+		"_postman_id": "fb3506b1-bc47-48b3-9061-29296be22f86",
+		"name": "Mocks y Mascotas API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38715882",
+		"description": "Colección de Postman para probar la API de Mocks y Mascotas. Asegúrate de configurar la variable de entorno 'baseURL' en Postman (ej. http://localhost:8080)."
+	},
+	"item": [
+		{
+			"name": "Mocks",
+			"item": [
+				{
+					"name": "POST Generate Data",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"users\": 5,\n  \"pets\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/mocks/generateData",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"mocks",
+								"generateData"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Mocking Pets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/mocks/mockingpets",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"mocks",
+								"mockingpets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Mocking Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/mocks/mockingusers",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"mocks",
+								"mockingusers"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Mascotas (Pets)",
+			"item": [
+				{
+					"name": "GET Pets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/pets",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"pets"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuarios (Users)",
+			"item": [
+				{
+					"name": "GET Users (Admin)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/users",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						},
+						"description": "Requiere cookie de sesión de un usuario ADMIN. Modificar un usuario a rol 'admin' en la BD y luego hacer login."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sesiones",
+			"item": [
+				{
+					"name": "POST Register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"first_name\": \"Test\",\n  \"last_name\": \"UserReg\",\n  \"email\": \"testregister@example.com\",\n  \"age\": 30,\n  \"password\": \"password123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/sessions/register",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"sessions",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"testregister@example.com\",\n  \"password\": \"password123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/sessions/login",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"sessions",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Current Session",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/sessions/current",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"sessions",
+								"current"
+							]
+						},
+						"description": "Requiere cookie de sesión establecida por el login."
+					},
+					"response": []
+				},
+				{
+					"name": "POST Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/sessions/logout",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"sessions",
+								"logout"
+							]
+						},
+						"description": "Requiere cookie de sesión."
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}
